@@ -1,9 +1,9 @@
 # OTW-solutions
 
-Here are my solutions some of the challenges from online CTF [https://overthewire.org/wargames/](OverTheWire).
+Here are my solutions some of the challenges from online CTF [OverTheWire](https://overthewire.org/wargames/).
 
-- [https://github.com/Math-Morin/OTW-solutions/tree/main/bandit](Bandit)
-- [https://github.com/Math-Morin/OTW-solutions/tree/main/natas](Natas)
+- [Bandit](https://github.com/Math-Morin/OTW-solutions/tree/main/bandit)
+- [Natas](https://github.com/Math-Morin/OTW-solutions/tree/main/natas)
 
 ---
 
