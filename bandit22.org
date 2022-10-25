@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       ae959b43-1fe4-4d4f-88ff-23fe69df2304
+:END:
+#+title: Bandit22
+* Previous
+[[id:a21f5ca7-8f91-422f-a640-1e0fa1b27d9c][Bandit21]]
+
+* Password
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+* Flag
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+* Notes
+
+Translate what cronjob for bandit22 to bandit23.
+#+begin_src bash
+echo "I am user bandit23"| md5sum | cut -d ' ' -f 1
+cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+#+end_src
+
+* Next
+[[id:f600117f-3a57-4d68-b6a1-eed2e3e6afc5][Bandit23]]

@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       356b430a-8d17-4665-b5f1-069627255cd4
+:END:
+#+title: Bandit16
+
+* Previous
+[[id:c16a7db3-6b39-46aa-adaa-0da41561415f][Bandit15]]
+
+* Password
+cluFn7wTiGryunymYOu4RcffSxQluehd
+
+* Flag
+xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+
+* Notes
+Scan for open ports on given range.
+Copy ssh key locally.
+#+begin_src bash
+nmap localhost -p 31000-32000
+ncat --ssl localhost 31790
+chmod 400 key
+ssh -i key bandit16@bandit...
+#+end_src
+
+* Next
+[[id:e2e8b0b1-ee2f-4014-ba4b-3c36be5d0350][Bandit17]]

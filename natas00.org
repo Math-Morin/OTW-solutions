@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       56b2fa09-98d0-49a8-9e9e-9942c2fa4beb
+:END:
+#+title: Natas0
+* Previous
+N/A
+
+* Password
+natas0
+
+* Flag
+gtVrDuiDfck831PqWsLEZy5gyDz1clto
+
+* Notes
+
+Password found as a comment in the HTML of the page
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests  # http requests
+import re        # regular expressions
+
+username = "natas0"
+password = username
+
+url = "http://%s.natas.labs.overthewire.org" % username
+
+response = requests.get(url, auth=(username, password))
+
+content = response.text
+
+p = re.findall("<!--The password for natas1 is (.*) -->", content)[0]
+
+print(p)
+#+end_src
+
+#+RESULTS:
+: gtVrDuiDfck831PqWsLEZy5gyDz1clto
+
+* Next
+[[id:a87f9ade-e932-413d-a8f2-5f8da9c535ae][Natas1]]

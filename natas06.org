@@ -1,0 +1,102 @@
+:PROPERTIES:
+:ID:       340c47e7-79cb-4c63-b606-2d80357a56cc
+:END:
+#+title: Natas6
+* Previous
+[[id:4d555387-119c-40cc-8483-819b38b1ef08][Natas5]]
+
+* Password
+aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+
+* Flag
+7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+
+* Notes
+
+Source code given on the natas6 page:
+#+begin_src html
+<html>
+<head>
+<!-- This stuff in the header has nothing to do with the level -->
+<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
+<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
+<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
+<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
+<script>var wechallinfo = { "level": "natas6", "pass": "<censored>" };</script></head>
+<body>
+<h1>natas6</h1>
+<div id="content">
+
+<?
+
+include "includes/secret.inc";
+
+    if(array_key_exists("submit", $_POST)) {
+        if($secret == $_POST['secret']) {
+        print "Access granted. The password for natas7 is <censored>";
+    } else {
+        print "Wrong secret";
+    }
+    }
+?>
+
+<form method=post>
+Input secret: <input name=secret><br>
+<input type=submit name=submit>
+</form>
+
+<div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
+</div>
+</body>
+</html>
+
+#+end_src
+
+The `submit` key must exist.
+The `secret` k-v pair must equal the k-v pair on the server.
+The "includes/secret.inc" file is included, which contains :
+#+begin_src
+<?
+$secret = "FOEIUWGHFEEUHOFUOIU";
+?>
+#+end_src
+
+We send a POST request with the required k-v pairs.
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas6"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username, password, username)
+
+# secret from includes/secret.inc : FOEIUWGHFEEUHOFUOIU
+secret = "FOEIUWGHFEEUHOFUOIU"
+response = session.post(
+    url, auth=(username, password), data={"submit": "", "secret": secret}
+)
+
+content = response.text
+# print(content)
+
+p = re.findall("([a-zA-Z0-9]{32})", content)
+
+if p and p[0] == password:
+    p.pop(0)
+
+print(p[0])
+#+end_src
+
+#+RESULTS:
+: 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+
+* Next
+[[id:2f0c9708-04e6-4978-a6bd-5350e4f35804][Natas7]]

@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       a21f5ca7-8f91-422f-a640-1e0fa1b27d9c
+:END:
+#+title: Bandit21
+* Previous
+[[id:975f0c7e-c43b-429d-b876-69dbdf33c293][Bandit20]]
+
+* Password
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+* Flag
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+* Notes
+Look at cronjobs to see a shell script writing a file in /tmp/.
+cat that file to find the flag.
+#+begin_src bash
+cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+#+end_src
+
+* Next
+[[id:ae959b43-1fe4-4d4f-88ff-23fe69df2304][Bandit22]]

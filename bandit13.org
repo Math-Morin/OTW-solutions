@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       63ec5ade-4768-4d11-a916-4cfbacb26837
+:END:
+#+title: Bandit13
+
+* Previous
+[[id:736a1efc-297c-4ce8-9e39-75472a36d5ef][Bandit12]]
+
+* Password
+8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+* Flag
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+* Notes
+#+begin_src bash
+ssh -i ./sshkey.private bandit14@localhost
+#+end_src
+
+* Next
+[[id:dcbb6861-a5a6-4cae-886d-ccc6ec4395b2][Bandit14]]

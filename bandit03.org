@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       2969b08b-5099-4474-875d-ac6d07b153fd
+:END:
+#+title: Bandit3
+
+* Previous
+[[id:30ac6b2c-f0a1-43c8-8a86-249198657612][Bandit2]]
+
+* Password
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+* Flag
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+* Notes
+Hidden files start with a '.'
+They can be listed with:
+#+begin_src bash
+ls -la
+#+end_src
+
+* Next
+[[id:e5065e7f-7dbc-41aa-92a0-2861ec5b0093][Bandit4]]

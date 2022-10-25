@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       5e449536-ca80-4477-a60e-ec2107be922f
+:END:
+#+title: Bandit0
+
+* Password
+bandit0
+
+* Flag
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+* Notes
+#+begin_src bash
+cat readme
+#+end_src
+
+* Next
+[[id:11ef06d1-32f0-40d0-b6be-1bca5a28721a][Bandit1]]

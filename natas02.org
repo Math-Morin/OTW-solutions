@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       b527bf0e-f525-49ce-a63d-af3e68edae94
+:END:
+#+title: Natas2
+* Previous
+[[id:a87f9ade-e932-413d-a8f2-5f8da9c535ae][Natas1]]
+
+* Password
+ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+
+* Flag
+sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+
+* Notes
+
+The source html shows there is a .png file in a /files folder.
+There is a users.txt file in that folder.
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+from natas_pass import passwords
+
+username = "natas2"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/files/users.txt".format(username)
+
+response = requests.get(url, auth=(username, password))
+
+content = response.text
+# print(content)
+
+p = re.findall("natas3:(.*)", content)[0]
+print(p)
+#+end_src
+
+#+RESULTS:
+: sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+
+* Next
+[[id:2041bd3d-7f8f-48f4-ad64-3a710eafb62d][Natas3]]

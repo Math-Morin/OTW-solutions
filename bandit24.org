@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       2651ec98-61c8-4954-9394-2714e5ba1b69
+:END:
+#+title: Bandit24
+* Previous
+[[id:f600117f-3a57-4d68-b6a1-eed2e3e6afc5][Bandit23]]
+
+* Password
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+* Flag
+uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+* Notes
+
+Write bash script:
+#+begin_src bash
+#!/bin/bash
+
+PW="UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ"
+
+for PIN in {0000..9999}; do
+    echo $PW $PIN
+done | nc localhost 30002
+#+end_src
+
+* Next
+[[id:2c446745-4e2e-4978-995a-a74b31dc6564][Bandit25]]

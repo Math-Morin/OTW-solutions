@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       fce5c871-91fc-4d7e-ac9a-55318209a938
+:END:
+#+title: Bandit5
+
+* Previous
+[[id:e5065e7f-7dbc-41aa-92a0-2861ec5b0093][Bandit4]]
+
+* Password
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+* Flag
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+* Notes
+There is only one file of size 1033 bytes which is not executable.
+c: bytes
+#+begin_src bash
+find . -size 1033c ! -executable
+#+end_src
+
+* Ref:
+[[id:5a2fecf0-0227-47cb-bfbf-7e3068bfb8e9][find
+]]
+* Next
+[[id:442098d6-54bb-4db2-aa07-121e7251bd57][Bandit6]]

@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       e02835ba-da71-435f-b040-dce4e8cb0880
+:END:
+#+title: Bandit32
+* Previous
+[[id:c7c33d3c-c464-4b38-bcde-5d4c6ec721b6][Bandit31]]
+
+* Password
+56a9bf19c63d650ce78e6ec0354ee45e
+
+* Flag
+c9c3199ddf4121b10cf581a98d51caee
+
+* Notes
+
+#+begin_src bash
+
+#+end_src
+
+* Next

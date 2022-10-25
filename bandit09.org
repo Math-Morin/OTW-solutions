@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       520d5abc-05b7-4ade-8b8e-79ecbf4276be
+:END:
+#+title: Bandit9
+
+* Previous
+[[id:e8ce44e9-8f0c-45be-bbaf-360abf55a5ef][Bandit8]]
+
+* Password
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+* Flag
+truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+
+* Notes
+Use [[id:73c2cc19-188d-48bb-a70d-8603e22d695c][grep]] to find the line.
+
+#+begin_src bash
+strings data.txt | grep =
+#+end_src
+
+#+begin_src bash
+strings data.txt | grep '=\{3\}\ [[:alnum:]]\{31,33\}'
+#+end_src
+
+-a flag is for treating binary files as text files
+
+Alternatively, simply use '/' in vi, and 'n' to navigate.
+
+* Next
+[[id:d7b320f3-843e-4724-81ec-4dc87b616e92][Bandit10]]

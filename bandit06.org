@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       442098d6-54bb-4db2-aa07-121e7251bd57
+:END:
+#+title: Bandit6
+
+* Password
+[[id:fce5c871-91fc-4d7e-ac9a-55318209a938][Bandit5]]
+
+* Password
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+* Flag
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+* Notes
+#+begin_src bash
+find / -type f -user bandit7 -group bandit6 -size 33c 2>&-
+#+end_src
+
+Flags used:
+-user, -group, -size
+
+redirection 2>&-
+2: stderr
+
+* Next
+[[id:22cd9207-c2e8-4507-b9e3-930292862f17][Bandit7]]

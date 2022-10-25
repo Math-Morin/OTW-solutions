@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       22cd9207-c2e8-4507-b9e3-930292862f17
+:END:
+#+title: Bandit7
+
+* Password
+[[id:442098d6-54bb-4db2-aa07-121e7251bd57][Bandit6]]
+
+* Password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+* Flag
+cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+* Notes
+#+begin_src bash
+grep millionth data.txt
+#+end_src
+
+Alternatively, use '/' in vi to search for the word 'millionth'.
+
+#+begin_src bash
+cat data.txt | grep millionth
+#+end_src
+
+* Next
+[[id:e8ce44e9-8f0c-45be-bbaf-360abf55a5ef][Bandit8]]

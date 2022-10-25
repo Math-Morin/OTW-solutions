@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       11ef06d1-32f0-40d0-b6be-1bca5a28721a
+:END:
+#+title: Bandit1
+
+* Previous
+[[id:5e449536-ca80-4477-a60e-ec2107be922f][Bandit0]]
+
+* Password
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+* Flag
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+* Notes
+must cat a file with name "-"
+#+begin_src bash
+cat ./-
+#+end_src
+
+* Next
+[[id:30ac6b2c-f0a1-43c8-8a86-249198657612][Bandit2]]

@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       975f0c7e-c43b-429d-b876-69dbdf33c293
+:END:
+#+title: Bandit20
+
+* Previous
+[[id:3dd5ef09-e9d9-41e3-92c2-8b5a6f28d5d6][Bandit19]]
+
+* Password
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+* Flag
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+* Notes
+
+#+begin_src bash
+nc -l localhost -p 1234 &
+./suconnect 1234 &
+fg 1
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+#+end_src
+
+* Next
+[[id:a21f5ca7-8f91-422f-a640-1e0fa1b27d9c][Bandit21]]

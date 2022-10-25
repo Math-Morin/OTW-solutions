@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       736a1efc-297c-4ce8-9e39-75472a36d5ef
+:END:
+#+title: Bandit12
+
+* Previous
+[[id:b17e4cdc-8062-48a0-a973-2d27f29fdf64][Bandit11]]
+
+* Password
+5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+* Flag
+8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+* Notes
+hexdump + gzip + bzip2 + tar multiple compression files
+
+#+begin_src bash
+xxd -reverse data.txt > step1
+file step1  # tells us it is gzip compressed
+mv step1 step1.gz
+gunzip step1.gz
+file step1  # tells us it is bzip2 compressed
+bunzip2 step1
+file step1  # tells us it is gzip compressed, again
+mv step1.out step1.gz
+gunzip step1
+tar xf step1
+...
+#+end_src
+* Next
+[[id:63ec5ade-4768-4d11-a916-4cfbacb26837][Bandit13]]

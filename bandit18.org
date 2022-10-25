@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       e81b3b19-4100-4dd6-b1ac-09c06ce353ff
+:END:
+#+title: Bandit18
+
+* Previous
+[[id:e2e8b0b1-ee2f-4014-ba4b-3c36be5d0350][Bandit17]]
+
+* Password
+kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+* Flag
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+* Notes
+The .bashrc file logs us out immediately after connection.
+Chain the cat command so we do not have to stay connected.
+#+begin_src bash
+ssh <address> <port> cat readme
+#+end_src
+
+Or change shell, since the probleme is with the .bashrc file.
+#+begin_src bash
+ssh <adress> -p <port> "sh"
+#+end_src
+
+* Next
+[[id:3dd5ef09-e9d9-41e3-92c2-8b5a6f28d5d6][Bandit19]]

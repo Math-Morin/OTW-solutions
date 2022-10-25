@@ -1,0 +1,115 @@
+:PROPERTIES:
+:ID:       c4d41ed7-56c4-496b-a8b9-5b0862c6e380
+:END:
+#+title: Natas16
+* Previous
+[[id:7d44aa7c-68da-4fb0-bbc5-8315c9d85aad][Natas15]]
+
+* Password
+WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+* Flag
+
+
+* Notes
+
+#+begin_src python :results output
+
+import requests
+import re
+import html
+from bs4 import BeautifulSoup as bs
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas16"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+response = session.get(url, auth=(username, password))
+# response = session.get(url + "index-source.html", auth=(username, password))
+
+# response = requests.post(
+#     url+"?debug",
+#     auth=(username, password),
+#     data={'username':'" or username = ANY (SELECT username FROM users); #', "password":""},
+# )
+
+raw_content = response.text
+sourcecode = html.unescape(raw_content)
+soup = bs(sourcecode, features="html.parser")
+# headers = response.headers
+# print(headers)
+print(soup.prettify())
+
+# script_path = re.findall("(upload/[a-zA-Z0-9]{10}.php)", raw_content)[0]
+
+# if script_path :
+#     raw_content = requests.get(
+#     url+script_path+"?var=cat /etc/natas_webpass/natas14",
+#     auth=(username, password)
+# ).text
+# else :
+#     print("Error. No path found.")
+
+p = re.findall("([a-zA-Z0-9]{32})", raw_content)
+
+if p and p[0] == password:
+    p.pop(0)
+
+if p :
+    print(p[0])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+<html>
+ <head>
+  <!-- This stuff in the header has nothing to do with the level -->
+  <link href="http://natas.labs.overthewire.org/css/level.css" rel="stylesheet" type="text/css"/>
+  <link href="http://natas.labs.overthewire.org/css/jquery-ui.css" rel="stylesheet">
+   <link href="http://natas.labs.overthewire.org/css/wechall.css" rel="stylesheet"/>
+   <script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js">
+   </script>
+   <script src="http://natas.labs.overthewire.org/js/jquery-ui.js">
+   </script>
+   <script src="http://natas.labs.overthewire.org/js/wechall-data.js">
+   </script>
+   <script src="http://natas.labs.overthewire.org/js/wechall.js">
+   </script>
+   <script>
+    var wechallinfo = { "level": "natas16", "pass": "WaIHEacj63wnNIBROHeqi3p9t0m5nhmh" };
+   </script>
+  </link>
+ </head>
+ <body>
+  <h1>
+   natas16
+  </h1>
+  <div id="content">
+   For security reasons, we now filter even more on certain characters
+   <br/>
+   <br/>
+   <form>
+    Find words containing:
+    <input name="needle"/>
+    <input name="submit" type="submit" value="Search"/>
+    <br/>
+    <br/>
+   </form>
+   Output:
+   <pre>
+</pre>
+   <div id="viewsource">
+    <a href="index-source.html">
+     View sourcecode
+    </a>
+   </div>
+  </div>
+ </body>
+</html>
+
+#+end_example
+
+* Next

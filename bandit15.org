@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       c16a7db3-6b39-46aa-adaa-0da41561415f
+:END:
+#+title: Bandit15
+
+* Previous
+[[id:dcbb6861-a5a6-4cae-886d-ccc6ec4395b2][Bandit14]]
+
+* Password
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+* Flag
+cluFn7wTiGryunymYOu4RcffSxQluehd
+
+* Notes
+pipe the password to
+#+begin_src bash
+ncat --ssl localhost 30001
+#+end_src
+or
+#+begin_src bash
+openssl s_client -connect localhost:30001 -ign_eof
+#+end_src
+* Next
+[[id:356b430a-8d17-4665-b5f1-069627255cd4][Bandit16]]

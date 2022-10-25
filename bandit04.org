@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       e5065e7f-7dbc-41aa-92a0-2861ec5b0093
+:END:
+#+title: Bandit4
+
+* Previous
+[[id:2969b08b-5099-4474-875d-ac6d07b153fd][Bandit3]]
+
+* Password
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+* Flag
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+* Notes
+Only 1 file in the 10 is human readable.
+To find it, grep alphanumerical words of max 32 char (flags are 32 char long).
+#+begin_src bash
+grep '[0-9A-Za-z]\{32\}' ./*
+#+end_src
+
+Print the type of data, only one file has ASCII text
+#+begin_src bash
+find . -type f | xargs file
+#+end_src
+
+- [[id:5a2fecf0-0227-47cb-bfbf-7e3068bfb8e9][find]]
+
+* Next
+[[id:fce5c871-91fc-4d7e-ac9a-55318209a938][Bandit5]]

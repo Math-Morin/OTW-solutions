@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       80c1df9d-58ee-4663-94a5-05a15c05313d
+:END:
+#+title: Bandit30
+* Previous
+[[id:e8b7ca0c-2163-43ef-8d90-2373018646ae][Bandit29]]
+
+* Password
+5b90576bedb2cc04c86a9e924ce42faf
+
+* Flag
+47e603bb428404d265f59c42920d81e5
+
+* Notes
+
+There is a tag `secret`, visible when autocomplete on git checkout, and in packed-refs folder.
+#+begin_src bash
+git cat-file -p secret
+#+end_src
+
+* Next
+[[id:c7c33d3c-c464-4b38-bcde-5d4c6ec721b6][Bandit31]]

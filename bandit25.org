@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       2c446745-4e2e-4978-995a-a74b31dc6564
+:END:
+#+title: Bandit25
+* Previous
+[[id:2651ec98-61c8-4954-9394-2714e5ba1b69][Bandit24]]
+
+* Password
+uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+* Flag
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+* Notes
+
+#+begin_src bash
+cat /etc/passwd | grep bandit26
+#+end_src
+reveals that bandit26 runs a script as a 'shell'.
+This script runs more on a small file which contains an ASCII banner.
+
+You can interact with vi from within 'more', with the `v` key.
+
+Then you can use the `:e` commands in vi to get the "/etc/bandit_pass/bandit26" flag.
+
+* Next
+[[id:5031f4a0-7e40-4d88-8207-6c546ca62300][Bandit26]]

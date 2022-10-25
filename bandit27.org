@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       bfcc690e-40ab-4a6d-a959-6e8d9ac3b77f
+:END:
+#+title: Bandit27
+* Previous
+[[id:5031f4a0-7e40-4d88-8207-6c546ca62300][Bandit26]]
+
+* Password
+3ba3118a22e93127a4ed485be72ef5ea
+
+* Flag
+0ef186ac70e04ea33b4c1853d2526fa2
+
+* Notes
+
+#+begin_src bash
+git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+#+end_src
+
+* Next
+[[id:3722cf83-0663-4c7e-8cea-dea90dd4ce7c][Bandit28]]

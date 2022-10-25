@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       3dd5ef09-e9d9-41e3-92c2-8b5a6f28d5d6
+:END:
+#+title: Bandit19
+
+* Previous
+[[id:e81b3b19-4100-4dd6-b1ac-09c06ce353ff][Bandit18]]
+
+* Password
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+* Flag
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+* Notes
+The setuid binary lets us do stuff as bandit20 user.
+
+#+begin_src bash
+./bandit20-do cat /etc/bandit_pass/bandit20
+#+end_src
+
+* Next
+[[id:975f0c7e-c43b-429d-b876-69dbdf33c293][Bandit20]]

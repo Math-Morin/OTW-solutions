@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       e8ce44e9-8f0c-45be-bbaf-360abf55a5ef
+:END:
+#+title: Bandit8
+
+* Password
+[[id:22cd9207-c2e8-4507-b9e3-930292862f17][Bandit7]]
+
+* Password
+cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+* Flag
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+* Notes
+
+The flag is on the only unique line of the file.
+#+begin_src bash
+sort data.txt | uniq -c | grep -w 1
+#+end_src
+
+sort: will sort the lines \ put repeating lines together.
+uniq: eliminates repeating sequential lines (hence 'sort'). -c flag put a counter at beginning of each line.
+[[id:73c2cc19-188d-48bb-a70d-8603e22d695c][grep]]: outputs the only line with the word (-w) 1 in it.
+
+#+begin_src bash
+sort data.txt | uniq -u
+#+end_src
+
+* Next
+[[id:520d5abc-05b7-4ade-8b8e-79ecbf4276be][Bandit9]]

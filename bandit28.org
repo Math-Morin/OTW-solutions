@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       3722cf83-0663-4c7e-8cea-dea90dd4ce7c
+:END:
+#+title: Bandit28
+* Previous
+[[id:bfcc690e-40ab-4a6d-a959-6e8d9ac3b77f][Bandit27]]
+
+* Password
+0ef186ac70e04ea33b4c1853d2526fa2
+
+* Flag
+bbc96594b4e001778eee9975372716b2
+
+* Notes
+
+#+begin_src bash
+git checkout HEAD~1
+#+end_src
+
+* Next
+[[id:e8b7ca0c-2163-43ef-8d90-2373018646ae][Bandit29]]

@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       b17e4cdc-8062-48a0-a973-2d27f29fdf64
+:END:
+#+title: Bandit11
+
+* Previous
+[[id:d7b320f3-843e-4724-81ec-4dc87b616e92][Bandit10]]
+
+* Password
+IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+* Flag
+5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+* Notes
+
+ROT13 cipher.
+tr
+regexp
+
+#+begin_src bash
+cat data.txt  | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+#+end_src
+
+Or use ROT13 on cyberchef
+
+* Next
+[[id:736a1efc-297c-4ce8-9e39-75472a36d5ef][Bandit12]]

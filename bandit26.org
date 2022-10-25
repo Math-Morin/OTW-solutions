@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       5031f4a0-7e40-4d88-8207-6c546ca62300
+:END:
+#+title: Bandit26
+* Previous
+[[id:2c446745-4e2e-4978-995a-a74b31dc6564][Bandit25]]
+
+* Password
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+* Flag
+3ba3118a22e93127a4ed485be72ef5ea
+
+* Notes
+
+From within vi, use command :
+
+#+begin_src vi
+:set shell=/bin/bash
+#+end_src
+
+to get a shell.
+
+Then, use setuid to get bandit27 flag.
+
+* Next
+[[id:bfcc690e-40ab-4a6d-a959-6e8d9ac3b77f][Bandit27]]

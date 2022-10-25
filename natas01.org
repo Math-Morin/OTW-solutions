@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       a87f9ade-e932-413d-a8f2-5f8da9c535ae
+:END:
+#+title: Natas1
+* Previous
+[[id:56b2fa09-98d0-49a8-9e9e-9942c2fa4beb][Natas0]]
+
+* Password
+gtVrDuiDfck831PqWsLEZy5gyDz1clto
+
+* Flag
+ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+
+* Notes
+
+Flag in a HTML comment.
+
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+from natas_pass import passwords
+
+username = "natas1"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org".format(username)
+
+response = requests.get(url, auth=(username, password))
+
+content = response.text
+# print(content)
+
+p = re.findall("([a-zA-Z0-9]{32})", content)[1]
+
+print(p)
+#+end_src
+
+#+RESULTS:
+: ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+
+* Next
+[[id:b527bf0e-f525-49ce-a63d-af3e68edae94][Natas2]]

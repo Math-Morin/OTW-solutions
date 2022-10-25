@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       e2e8b0b1-ee2f-4014-ba4b-3c36be5d0350
+:END:
+#+title: Bandit17
+
+* Previous
+[[id:356b430a-8d17-4665-b5f1-069627255cd4][Bandit16]]
+
+* Password
+xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+
+* Flag
+kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+* Notes
+Simply use diff to find the changed line.
+
+* Next
+[[id:e81b3b19-4100-4dd6-b1ac-09c06ce353ff][Bandit18]]

